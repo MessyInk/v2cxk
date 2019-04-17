@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "v2CXK",
+    "version": "1.0",
+    "description": "在座的像极了CXK",
+    "content_scripts": [
+        {
+        	"matches":["https://www.v2ex.com/*"],
+			"js":["js/cxk1.js"]
+        },
+		{
+			"matches":["http://jandan.net/pic"],
+			"js":["js/cxk2.js"]
+		}
+    ],
+	"browser_action":{
+	"default_popup":"popup.html"
+	}
+}
