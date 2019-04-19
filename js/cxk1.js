@@ -96,6 +96,7 @@ $(".reply_content").click(function(){
 });
 
 function findYou(){
+	if(storage.getItem("toolTo") != null ){
 	$("a").each(function(){
 	var text = storage.getItem("toolTo").split("@");
 	for(var i = 0;i<text.length;i++) {
@@ -105,7 +106,9 @@ function findYou(){
 		}
 	});
 }
+}
 function dontYou(){
+	if(storage.getItem("toolTo") != null ){
 	$("a").each(function(){
 	var text = storage.getItem("toolTo").split("@");
 	for(var i = 0;i<text.length;i++) {
@@ -114,6 +117,7 @@ function dontYou(){
 			}
 		}
 	});
+}
 }
 
 
