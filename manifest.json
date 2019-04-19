@@ -6,7 +6,7 @@
     "content_scripts": [
         {
         	"matches":["https://www.v2ex.com/*"],
-			"js":["js/cxk1.js"]
+			"js":["js/jquery-1.11.1.js","js/cxk1.js"]
         },
 		{
 			"matches":["http://jandan.net/pic"],

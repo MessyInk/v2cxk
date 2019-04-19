@@ -57,7 +57,7 @@ function change(method) {
 		}
 	}
 }
-
+findYou();
 if(storage.getItem("toolstatus") == 't1') {
 	change("moreRandom");
 }else if(storage.getItem("toolstatus") == 't2') {
@@ -69,6 +69,53 @@ if(storage.getItem("toolstatus") == 't1') {
 }else {
 	change("moreRandom");
 }
+$("html").dblclick(function(){$('html,body').animate({scrollTop: '0px'}, 800);});
+
+$(".reply_content").click(function(){
+	var textEx = /@<a href="\/member\/.+">.+<\/a>/;
+	var result = textEx.exec($(this).html());
+	if(result != null) {
+		dontYou();
+		var str1 = result[0].split("</a>"); 
+		var str2 = "";
+		for(var i = 0;i<str1.length;i++) {
+			if(str1[i] !="") {
+				if(str2 == "") {
+					str2 = str1[i].split("@<a href=\"/member/")[1].split("\">")[1];  //     \">
+				} else {
+					str2 = str2 + "@" + str1[i].split("@<a href=\"/member/")[1].split("\">")[1];
+				}
+			}
+		}
+		storage.setItem("toolTo",str2);
+		
+		findYou();
+	} else {
+	console.log("no match");
+	}
+});
+
+function findYou(){
+	$("a").each(function(){
+	var text = storage.getItem("toolTo").split("@");
+	for(var i = 0;i<text.length;i++) {
+		if($(this).text()==text[i]) {
+				$(this).css("color","red");
+			}
+		}
+	});
+}
+function dontYou(){
+	$("a").each(function(){
+	var text = storage.getItem("toolTo").split("@");
+	for(var i = 0;i<text.length;i++) {
+		if($(this).text()==text[i]) {
+				$(this).css("color","gray");
+			}
+		}
+	});
+}
+
 
 
 
