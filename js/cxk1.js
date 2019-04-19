@@ -27,6 +27,7 @@ var allPic = [
 	{"name":"d11","url":"https://ws3.sinaimg.cn/large/005BYqpgly1g25fwl3dq0g30dc07ihdt.jpg"},
 ];
 var storage = window.localStorage;
+if(storage.getItem("toolTo") != null) {findYou()}
 chrome.runtime.onMessage.addListener(function(message,sender,sendResponse) {
 	if(message.msg == 'v2ex') {
 		storage.setItem('toolstatus',message.value);
@@ -57,7 +58,6 @@ function change(method) {
 		}
 	}
 }
-findYou();
 if(storage.getItem("toolstatus") == 't1') {
 	change("moreRandom");
 }else if(storage.getItem("toolstatus") == 't2') {
